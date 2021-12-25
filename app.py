@@ -1,4 +1,5 @@
 from flask import Flask, render_template, redirect, url_for, session, request
+import time
 
 class LandingPage:
     def __init__(self, _title, _color, _slogan, _isLoggedIn):
@@ -12,6 +13,7 @@ class LandingPage:
             self.isLoggedIn = "Gestisci Account"
         else:
             self.isLoggedIn = "Registrati"
+
         
         return render_template('landingpage.html', title=self.title, color=self.color, slogan=self.slogan, stato=self.isLoggedIn)
 
@@ -31,7 +33,7 @@ class PreloadPage:
         return render_template('preload.html', redirect=self.redirect)
 
 app = Flask(__name__)
-app.config['secret_key'] = 'hghfhghirubruitbyutiyuryuid'
+app.secret_key = 'hghfhghirubruitbyutiyuryuid'
 
 @app.route("/")
 def init():
@@ -40,6 +42,7 @@ def init():
             return LandingPage('Kich', 'DarkKhaki', 'Kich', True).build()
     except:
         return LandingPage('Kich', 'DarkKhaki', 'Kich', False).build()
+        
 
 @app.route("/account")
 def account():
@@ -66,7 +69,16 @@ def preload():
     
     return PreloadPage(redirectPage).build()
 
-@app.route("/registration")
+@app.route("/registration", methods = ['POST', 'GET'])
 def registration():
-    return "d"
-    
+    if request.method == 'GET':
+        return render_template('registration.html')
+    elif request.method == 'POST':
+        pass
+
+
+
+
+
+if __name__ == "__main__":
+    app.run(host='0.0.0.0')
