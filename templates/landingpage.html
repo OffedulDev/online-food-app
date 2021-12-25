@@ -6,23 +6,29 @@
         <meta charset="utf-8">
         <link rel=stylesheet href="{{ url_for('static', filename='index.css') }}">
     </head>
-    <body style="background-color: '{{ color }}';">
+    <body style="background-color: #272D2F;">
         
         <script type="text/javascript">
             function preloader(){
                 setTimeout(() => {
                     document.getElementById("loading").style.display = "none";
                     document.getElementById("content").style.display = "block";
-                }, 5000)
+                }, 7000)
             }
             window.onload = preloader;
         </script>
 
         <div id="loading">
-            <img src="{{ url_for('static', filename='loading.gif') }}" alt="this slowpoke moves"  width="100" />
+            <img src="{{ url_for('static', filename='loading.gif') }}" alt="this slowpoke moves"  width="200" />
         </div>
         <div id="content">
-            <h1> {{ slogan }} </h1>
+            <div id="account">
+                <button onclick='window.location.replace("/account")'>{{ stato }}</button>
+            </div>
+            <h1 id="slogan"> {{ slogan }} </h1> <br><br><br><br><br>
+            <img src="{{ url_for('static', filename='pizza.jpg')}}" id="pizza" >
+            <img src="{{ url_for('static', filename='burger.jpg')}}" id="burger" >
+            <img src="{{ url_for('static', filename='frutta.jpg')}}" id="frutta" >
         </div>
     </body>
 </html>

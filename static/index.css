@@ -1,10 +1,125 @@
+@font-face {
+    font-family: Cafe_Francoise_D;
+    src: url("Cafe_Francoise_D.otf") format("opentype");
+}
+
 div#content {
     display: none;
     }
 
+img#burger {
+    display: block;
+    transform: translate(-50%, 0); 
+    position: absolute;
+    left: 50%;
+    width: 43%;
+    z-index: 20;
+    top: 15%;
+    border-radius: 10px;
+    border-color: rgba(146, 146, 146, 0.397);
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+
+img#pizza {
+    display: block;
+    transform: translate(-50%, 0); 
+    position: absolute;
+    left: 20%;
+    width: 33%;
+    top: 20%;
+    border-radius: 10px;
+    border-color: rgba(146, 146, 146, 0.397);
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+
+img#frutta {
+    display: block;
+    transform: translate(-50%, 0); 
+    position: absolute;
+    left: 80%;
+    width: 33%;
+    top: 20%;
+    border-radius: 10px;
+    border-color: rgba(146, 146, 146, 0.397);
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+}
+
+h1#slogan {
+    font-family: Cafe_Francoise_D;
+    text-align: center;
+    font-size: 42px;
+    margin-top: 25px;
+    letter-spacing: 7px;
+    color:#ffffff;
+}
+
 div#loading {
     position:absolute;
-    left: 30%;
+    left: 42%;
+    top: 45%;
     width: 50%;
     padding: 10px;
     }
+
+/* Account Button CSS */
+
+button {
+    position: absolute;
+    left: 95%;
+    top: 4%;
+	width: 75px;
+	height: 75px;
+	cursor: pointer;
+	background-color: #5de6de;
+	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUqyYzDi6ckLoaqHE1FhjcEQCSOnmvsxj6iQ&usqp=CAU");
+	border: none;
+	border-radius: 50%;
+	transition: 200ms;
+}
+
+button img {
+	fill: white;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+button:before {
+	content: 'Il mio Account';
+	position: absolute;
+	transform: translateX(-50%) translateY(45px);
+	font-size: 15px;
+	transition: 200ms;
+	color: transparent;
+	font-weight: bold;
+}
+
+button:hover {
+	box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+	width: 80px;
+	height: 80px;
+}
+
+button:hover::before {
+	color: rgb(255, 252, 203);
+}
+
+button:hover svg {
+		animation: bounce 2s infinite linear;
+}
+
+@keyframes bounce {
+	0% {transform: translateX(-50%) translateY(-50%)}
+	25% {transform: translateX(-50%) translateY(-65%)}
+	50% {transform: translateX(-50%) translateY(-50%)}
+	75% {transform: translateX(-50%) translateY(-35%)}
+	100% {transform: translateX(-50%) translateY(-50%)}
+}
+
+button:focus {
+	outline: none;
+}

@@ -15,4 +15,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def init():
-    return LandingPage('LandTst', 'DarkKhaki', 'test').build()
+    return LandingPage('Kich #foodforeverybody', 'DarkKhaki', 'Kich, food for everybody!').build()
