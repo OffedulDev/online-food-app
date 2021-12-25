@@ -1,0 +1,10 @@
+div#content {
+    display: none;
+    }
+
+div#loading {
+    position:absolute;
+    left: 30%;
+    width: 50%;
+    padding: 10px;
+    }

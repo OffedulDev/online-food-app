@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> {{ title }} </title>
+        <meta charset="utf-8">
+        <link rel=stylesheet href="{{ url_for('static', filename='index.css') }}">
+    </head>
+    <body style="background-color: '{{ color }}';">
+        
+        <script type="text/javascript">
+            function preloader(){
+                setTimeout(() => {
+                    document.getElementById("loading").style.display = "none";
+                    document.getElementById("content").style.display = "block";
+                }, 5000)
+            }
+            window.onload = preloader;
+        </script>
+
+        <div id="loading">
+            <img src="{{ url_for('static', filename='loading.gif') }}" alt="this slowpoke moves"  width="100" />
+        </div>
+        <div id="content">
+            <h1> {{ slogan }} </h1>
+        </div>
+    </body>
+</html>
