@@ -3,6 +3,14 @@
     src: url("Cafe_Francoise_D.otf") format("opentype");
 }
 
+div#loading {
+	display: none;
+    top: 384px;
+    position: absolute;
+    transform: translate(-50%,-50%);
+    right: 0px;
+}
+
 .box{
 	position:absolute;
 	left:50%;
@@ -54,7 +62,7 @@
 }
 
 .btn#blue{
-    margin-left: 30%;
+    margin-left: 27%;
 	color:#fff;
 	background-color:#3c5e15;
 	outline: none;

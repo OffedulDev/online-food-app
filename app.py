@@ -1,5 +1,14 @@
+import random
 from flask import Flask, render_template, redirect, url_for, session, request
 import time
+import json
+import os.path
+
+upper = "ABCDEFGHILMNOPQRSTUVZ"
+lower = "abcdefhilmnopqrstuvz"
+digits = "1234567890"
+
+_all = upper+lower+digits
 
 class LandingPage:
     def __init__(self, _title, _color, _slogan, _isLoggedIn):
@@ -32,17 +41,76 @@ class PreloadPage:
     def build(self):
         return render_template('preload.html', redirect=self.redirect)
 
+class Account:
+    def __init__(self, name, password):
+        self.name = name
+        self.password = password
+        self.json = None
+
+    def buildjson(self):
+        account = {}
+
+        account['name'] = self.name
+        account['password'] = self.password
+        account['token'] = str(self.buildtoken(True))
+
+        dumped = json.dumps(account, indent=2)
+
+        self.json = dumped
+        return None
+
+    def buildlist(self):
+        if self.json == None: return
+
+        with open("profiles/" + self.name + ".kichuseraccount", "w") as f:
+            f.seek(0)
+            f.write(str(str(self.json).encode('utf-32'), 'utf-32'))
+            f.truncate()
+
+    def buildtoken(self, bypass):
+        if not bypass == True and self.json == None: return
+        
+        temp = random.sample(_all, 7)
+
+        temp1 = "".join(temp)
+
+        temp2 = random.sample(_all, 7)
+
+        temp3 = "".join(temp)
+
+        temp4 = random.sample(_all, 7)
+
+        temp5 = "".join(temp)
+
+        token = str(temp1 + temp3 + temp5)
+
+        return token
+            
+            
+
 app = Flask(__name__)
 app.secret_key = 'hghfhghirubruitbyutiyuryuid'
 
 @app.route("/")
 def init():
     try:
-        if session['isLoggedIn'] == True:
-            return LandingPage('Kich', 'DarkKhaki', 'Kich', True).build()
+        token = request.args.get('token')
+
+        with open("profiles/" + session['user'] + ".kichuseraccount", "r") as f:
+            loadj = json.loads(f.read())
+
+            print(token, loadj['token'])
+            if token == loadj['token']:
+                return LandingPage('Kich', 'DarkKhaki', 'Kich', True).build()
+            else:
+                return LandingPage('Kich', 'DarkKhaki', 'Kich', False).build()
     except:
         return LandingPage('Kich', 'DarkKhaki', 'Kich', False).build()
-        
+
+@app.route("/reset")
+def reset():
+    session['isLoggedIn'] = False
+    return redirect("/")
 
 @app.route("/account")
 def account():
@@ -52,13 +120,13 @@ def account():
         isLoggedIn = session['isLoggedIn']
 
         if isLoggedIn == True:
-            return redirect("/")
+            return redirect("/?token=" + session['token'])
         else:
-            isLoggedIn = True
+            isLoggedIn = False
     except:
-        isLoggedIn = True
-    
-    if isLoggedIn != True: return redirect("/")
+        isLoggedIn = False
+
+    if isLoggedIn != False: return redirect("/?token=" + session['token'])
 
     return redirect("/preload?redirect=registration&isLoggedIn=False")
 
@@ -74,7 +142,24 @@ def registration():
     if request.method == 'GET':
         return render_template('registration.html')
     elif request.method == 'POST':
-        pass
+        username = request.values.get('username')
+        password = request.values.get('password')
+
+       # if os.path("./profiles/" + username.encode( 'utf-32') + ".kichuseraccount"): return redirect("/")
+        
+        if username == " " or password == " ": return
+
+        acc = Account(username, password)
+        acc.buildjson()
+        acc.buildlist()
+
+        session['isLoggedIn'] = True
+        session['user'] = acc.name
+        session['token'] = json.loads(acc.json)['token']
+        return redirect("/?token=" + session['token'])
+
+
+
 
 
 
