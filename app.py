@@ -4,6 +4,8 @@ import time
 import json
 import os.path
 
+
+
 class LandingPage:
     def __init__(self, _title, _color, _slogan, _isLoggedIn):
         self.title = _title
