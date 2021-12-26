@@ -4,12 +4,6 @@ import time
 import json
 import os.path
 
-upper = "ABCDEFGHILMNOPQRSTUVZ"
-lower = "abcdefhilmnopqrstuvz"
-digits = "1234567890"
-
-_all = upper+lower+digits
-
 class LandingPage:
     def __init__(self, _title, _color, _slogan, _isLoggedIn):
         self.title = _title
@@ -74,9 +68,17 @@ class Account:
             f.seek(0)
             f.write(str(str(self.json).encode('utf-32'), 'utf-32'))
             f.truncate()
+            f.close()
 
     def buildtoken(self, bypass):
         if not bypass == True and self.json == None: return
+
+        
+        upper = "ABCDEFGHILMNOPQRSTUVZ"
+        lower = "abcdefhilmnopqrstuvz"
+        digits = "1234567890"
+
+        _all = upper+lower+digits
         
         temp = random.sample(_all, 7)
 
@@ -170,7 +172,8 @@ def registration():
 
 @app.route('/home')
 def loadhome():
-    return redirect("/")
+    token = request.args.get('token')
+    return redirect('/?token=' + token)
 
 @app.route('/login', methods = ['POST', 'GET'])
 def login():
@@ -196,20 +199,22 @@ def login():
 
         if username == None or username == " " or password == None or password == " ": return redirect('/preload?redirect=home&isLoggedIn=false')
     
-        if not os.path("profiles/" + username + ".kichuseraccount"): return redirect('/preload?redirect=home&isLoggedIn=false')
+        if not os.path.exists("profiles/" + username + ".kichuseraccount"): return redirect('/preload?redirect=home&isLoggedIn=false')
     
-        with open("profiles/" + username, "w") as f:
-            content = f.read()
-            jsonDecode = json.loads(content)
+        with open("profiles/" + username + ".kichuseraccount", "r+") as f:
+            jsonDecode = json.loads(f.read())
         
             if password == jsonDecode['password']:
-                accObject = Account(jsonDecode['user'], jsonDecode['password'])
-                token = accObject.buildtoken()
-            
+                accObject = Account(jsonDecode['name'], jsonDecode['password'])
+                accObject.buildjson()
+                token = accObject.buildtoken(False)
+
                 newJson = {}
                 newJson['name'] = jsonDecode['name']
                 newJson['password'] = jsonDecode['password']
                 newJson['token'] = token
+                session['user'] = jsonDecode['name']
+                session['token'] = token
             
                 jsonEncode = json.dumps(newJson, indent=2)
                 f.seek(0)
@@ -217,6 +222,8 @@ def login():
                 f.truncate()
             
                 return redirect("/preload?redirect=home&isLoggedIn=false&token=" + token)
+            else:
+                return redirect("/preload?redirect=home&isLoggedIn=false")
         
 
 

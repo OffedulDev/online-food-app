@@ -3,6 +3,10 @@
     src: url("Cafe_Francoise_D.otf") format("opentype");
 }
 
+div#content {
+	zoom: 125%;
+}
+
 body {
 	background-image: url("kich.jpg");
 	background-repeat: no-repeat;

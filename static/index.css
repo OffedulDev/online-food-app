@@ -9,9 +9,9 @@ html, body {
 }
 
 
-
 div#content {
     display: none;
+    zoom: 126%;
     }
 
 div#images {
