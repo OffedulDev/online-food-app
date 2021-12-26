@@ -4,31 +4,35 @@ import time
 import json
 import os.path
 
+from flask.helpers import flash
+
 
 
 class LandingPage:
-    def __init__(self, _title, _color, _slogan, _isLoggedIn):
+    def __init__(self, _title, _isLoggedIn, _accName=None):
         self.title = _title
-        self.color = _color
-        self.slogan = _slogan
         self.isLoggedIn = _isLoggedIn
-    
+        self.accName = None
+
+        if not _accName == None:
+            self.accName = _accName
+
     def build(self):
         if self.isLoggedIn == True:
             self.isLoggedIn = "Gestisci Account"
         else:
             self.isLoggedIn = "Registrati"
 
-        
-        return render_template('landingpage.html', title=self.title, color=self.color, slogan=self.slogan, stato=self.isLoggedIn)
+        return render_template('landingpage.html', title=self.title, stato=self.isLoggedIn, accname=self.accName)
 
 class AccountPage:
-    def __init__(self, _name, _password):
+    def __init__(self, _name, _password, _delivery_address):
         self._name = _name
-        self._password = str(_password.decode("utf-32"))
+        self._password = _password
+        self._delivery_address = _delivery_address
     
     def build(self):
-        return render_template('accountpage.html', self._name, self._password)
+        return render_template('accountmanagment.html', name=self._name, indirizzo=self._delivery_address)
 
 class PreloadPage:
     def __init__(self, redirect, token=None):
@@ -38,6 +42,13 @@ class PreloadPage:
     def build(self):
         return render_template('preload.html', redirect=self.redirect, token=self.token)
 
+class RegistrationPage:
+    def __init__(self):
+        self.v = None
+    
+    def build(self):
+        return render_template('registration.html')
+
 class LoginPage:
     def __init__(self):
         self.v = None
@@ -46,25 +57,16 @@ class LoginPage:
         return render_template('login.html')
 
 class Account:
-    def __init__(self, name, password):
+    def __init__(self, name, password, delivery_address):
         self.name = name
         self.password = password
+        self.delivery_address = delivery_address
         self.json = None
 
-    def buildjson(self):
-        account = {}
-
-        account['name'] = self.name
-        account['password'] = self.password
-        account['token'] = str(self.buildtoken(True))
-
-        dumped = json.dumps(account, indent=2)
-
-        self.json = dumped
-        return None
-
-    def buildlist(self):
-        if self.json == None: return
+    def build(self):
+        data = createUserData(self.name, self.password, self.delivery_address, str(self.createToken()))
+        
+        self.json = data
 
         with open("profiles/" + self.name + ".kichuseraccount", "w") as f:
             f.seek(0)
@@ -72,10 +74,9 @@ class Account:
             f.truncate()
             f.close()
 
-    def buildtoken(self, bypass):
-        if not bypass == True and self.json == None: return
+        return None
 
-        
+    def createToken(self):
         upper = "ABCDEFGHILMNOPQRSTUVZ"
         lower = "abcdefhilmnopqrstuvz"
         digits = "1234567890"
@@ -98,25 +99,72 @@ class Account:
 
         return token
               
+# Utility Functions
+
+def getUserData(username):
+    if username == None or username == " ": return None
+
+    with open("profiles/" + username + ".kichuseraccount", "r") as f:
+        loadj = json.loads(f.read())
+
+        return loadj
+
+def sessionElementExist(element_name):
+    exist = False
+
+    try:
+        if session[element_name] and session[element_name] != None:
+            return session[element_name]
+        else:
+            Exception('failed')
+    except:
+        exist = False
+
+    return exist
+
+def checkUserData(username):
+    if not os.path.exists("profiles/" + username + ".kichuseraccount"): return False
+
+def updateUserData(new_data, user):
+    with open("profiles/" + user + ".kichuseraccount", "r+") as f:
+        f.seek(0)
+        f.write(new_data)
+        f.truncate()
+        f.close()
+    
+    return None
+
+def createUserData(username, password, delivery_address, token):
+    data = {}
+    data['name'] = username
+    data['password'] = password
+    data['delivery_address'] = delivery_address
+    data['token'] = token
+
+    return json.dumps(data, indent=2)
 
 app = Flask(__name__)
 app.secret_key = 'hghfhghirubruitbyutiyuryuid'
 
 @app.route("/")
 def init():
-    try:
-        token = request.args.get('token')
+    token = sessionElementExist('token')
 
-        with open("profiles/" + session['user'] + ".kichuseraccount", "r") as f:
-            loadj = json.loads(f.read())
+    if token == False or token == None:
+        return LandingPage('Kich', False).build()
 
-            print(token, loadj['token'])
-            if token == loadj['token']:
-                return LandingPage('Kich', 'DarkKhaki', 'Kich', True).build()
-            else:
-                return LandingPage('Kich', 'DarkKhaki', 'Kich', False).build()
-    except:
-        return LandingPage('Kich', 'DarkKhaki', 'Kich', False).build()
+    given = request.args.get('token')
+
+    if given == None and token != False: return redirect("/?token=" + token)
+
+    userdata = getUserData(session['user'])
+
+    if token == userdata['token']:
+
+        return LandingPage('Kich', True, userdata['name']).build()
+    else:
+        return LandingPage('Kich', False).build()
+
 
 @app.route("/reset")
 def reset():
@@ -125,107 +173,96 @@ def reset():
     session['user'] = None
     return redirect("/")
 
+@app.route('/manageaccount', methods=['GET', 'POST'])
+def manageaccount():
+    if request.method == 'GET':
+        if sessionElementExist('user') != False:
+            userdata = getUserData(session['user'])
+
+            return AccountPage(userdata['name'], userdata['password'], userdata['delivery_address']).build()
+        else:
+            return redirect("/")
+    else:
+        if 'deliveryAddressEditForm' in request.form and sessionElementExist('user') != False:
+
+            userdata = getUserData(session['user'])
+            new_address = request.values.get('delivery_address')
+
+            if new_address == " ": return redirect("/")
+            
+
+ 
 @app.route("/account")
 def account():
-    isLoggedIn = None
+    isLoggedIn = sessionElementExist('isLoggedIn')
 
-    try:
-        isLoggedIn = session['isLoggedIn']
-
-        if isLoggedIn == True:
-            return redirect("/?token=" + session['token'])
-        else:
-            isLoggedIn = False
-    except:
-        isLoggedIn = False
-
-    if isLoggedIn != False: return redirect("/?token=" + session['token'])
+    if not (isLoggedIn == False): return redirect("/manageaccount")
 
     return redirect("/preload?redirect=registration&isLoggedIn=False")
 
 @app.route("/preload")
 def preload():
     redirectPage = request.args.get('redirect')
-    token = request.args.get('token')
     isLoggedIn = request.args.get('isLoggedIn')
     
-    return PreloadPage(redirectPage, token).build()
+    return PreloadPage(redirectPage).build()
 
 @app.route("/registration", methods = ['POST', 'GET'])
 def registration():
     if request.method == 'GET':
-        return render_template('registration.html')
+        return RegistrationPage().build()
     elif request.method == 'POST':
         username = request.values.get('username')
+        delivery_address = request.values.get('delivery_address')
         password = request.values.get('password')
-
-       # if os.path("./profiles/" + username.encode( 'utf-32') + ".kichuseraccount"): return redirect("/")
         
         if username == " " or password == " ": return
+        if len(username) > 15 or len(username) < 2: return redirect("/registration")
 
-        acc = Account(username, password)
-        acc.buildjson()
-        acc.buildlist()
+        acc = Account(username, password, delivery_address)
+        acc.build()
 
         session['isLoggedIn'] = True
         session['user'] = acc.name
-        session['token'] = json.loads(acc.json)['token']
-        return redirect("/?token=" + session['token'])
+        session['token'] = getUserData(acc.name)['token']
+        return redirect("/")
 
 @app.route('/home')
 def loadhome():
-    token = request.args.get('token')
-    return redirect('/?token=' + token)
+    return redirect('/')
 
 @app.route('/login', methods = ['POST', 'GET'])
 def login():
     if request.method == 'GET':
         return LoginPage().build()
     elif request.method == 'POST':
-        sessionToken = None
-        sessionUser = None
-    
-        try:
-            sessionToken = session['token']
-            sessionUser = session['user']
+        sessionToken = sessionElementExist('sessionToken')
+        sessionUser = sessionElementExist('user')
         
-        except:
-        
-            sessionToken = None
-            sessionUser = None
-        
-        if sessionToken != None: return redirect('/preload?redirect=home&isLoggedIn=false&token=' + sessionToken)
-    
+        if sessionToken != False: return redirect('/preload?redirect=home&isLoggedIn=false')
+        if checkUserData(sessionUser) == False: return redirect('/preload?redirect=home&isLoggedIn=false')
+
+        # starts account log
+
         username = request.values.get("username")
         password = request.values.get("password")
 
-        if username == None or username == " " or password == None or password == " ": return redirect('/preload?redirect=home&isLoggedIn=false')
+        if username == " " or password == " ": return redirect('/preload?redirect=home&isLoggedIn=false')
     
-        if not os.path.exists("profiles/" + username + ".kichuseraccount"): return redirect('/preload?redirect=home&isLoggedIn=false')
-    
-        with open("profiles/" + username + ".kichuseraccount", "r+") as f:
-            jsonDecode = json.loads(f.read())
+        userdata = getUserData(username)
         
-            if password == jsonDecode['password']:
-                accObject = Account(jsonDecode['name'], jsonDecode['password'])
-                accObject.buildjson()
-                token = accObject.buildtoken(False)
+        if password == userdata['password']:
+            accObject = Account(userdata['name'], userdata['password'])
+            accObject.build()
+            token = accObject.createToken()
 
-                newJson = {}
-                newJson['name'] = jsonDecode['name']
-                newJson['password'] = jsonDecode['password']
-                newJson['token'] = token
-                session['user'] = jsonDecode['name']
-                session['token'] = token
+            data = createUserData(userdata['name'], userdata['password'], userdata['delivery_address'], token)
+    
+            updateUserData(data, username)
             
-                jsonEncode = json.dumps(newJson, indent=2)
-                f.seek(0)
-                f.write(jsonEncode)
-                f.truncate()
-            
-                return redirect("/preload?redirect=home&isLoggedIn=false&token=" + token)
-            else:
-                return redirect("/preload?redirect=home&isLoggedIn=false")
+            return redirect("/")
+        else:
+            return redirect("/preload?redirect=home&isLoggedIn=false")
         
 
 

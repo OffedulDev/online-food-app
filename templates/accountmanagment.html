@@ -1,0 +1,78 @@
+<html><head>
+    <title> My Account </title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/static/accountmanagment.css">
+    <script type="text/javascript">
+        function hideAll() {
+            document.getElementById("passwordEdit").style.display = 'none';
+            document.getElementById("usernameEdit").style.display = 'none';
+            document.getElementById("deliveryAddressEdit").style.display = 'none';
+        }
+
+        function showDla() {
+            hideAll()
+            document.getElementById("deliveryAddressEdit").style.display = 'block';
+        }
+
+        function showPwd() {
+            hideAll()
+            document.getElementById("passwordEdit").style.display = 'block';
+        }
+
+        function showUs() {
+            hideAll()
+            document.getElementById("usernameEdit").style.display = 'block';
+        }
+    </script>
+</head>
+<body style="background-color: #272D2F;">
+    <div id="content">
+        <div id="infos">
+            <h1 id="accountname">Ciao, {{name}} consegneremo i tuoi ordini <br> a {{indirizzo}}</h1>
+            <h1 id="name">My Account</h1>
+            <h4 id="subtitle">Edit your account settings.</h4>
+        </div>
+        <div class="box"> 
+
+            <div id="options">
+                <button onclick="showDla()" id="delivery">Delivery Address
+                </button>
+                <button onclick="showUs()" id="username">Username
+                </button>
+                <button onclick="showPwd()" id="password">Password
+                </button>
+            </div>
+
+            <div id="usernameEdit">
+                <form method="post">
+                    <div class="input-container">
+                        <input name="username" type="text" required=""/>
+                        <label>New Username</label>		
+                    </div>
+                    <button class="btn" type="submit" name="usernameEditForm">submit</button>
+                </form>
+            </div>
+
+            <div id="deliveryAddressEdit">
+                <form method="post">
+                    <div class="input-container">
+                        <input name="delivery_address" type="text" required=""/>
+                        <label>New Delivery Address</label>		
+                    </div>
+                    <button class="btn" type="submit" name="deliveryAddressEditForm">submit</button>
+                </form>
+            </div>
+
+            <div id="passwordEdit">
+                <form method="post">
+                    <div class="input-container">
+                        <input name="password" type="text" required=""/>
+                        <label>New Password</label>		
+                    </div>
+                    <button class="btn" type="submit" name="passwordEditForm">submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body></html>

@@ -24,6 +24,17 @@ div#images {
     width: 1503px;
 }
 
+h4#accountname {
+    display: none;
+    position: relative;
+    top: -20px;
+    left: 84%;
+    letter-spacing: 1px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #FFFF;
+    font-weight: lighter;
+}
+
 img#burger {
     display: block;
     transform: translate(-50%, 0); 

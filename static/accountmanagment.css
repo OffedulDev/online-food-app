@@ -1,0 +1,177 @@
+@font-face {
+    font-family: Cafe_Francoise_D;
+    src: url("Cafe_Francoise_D.otf") format("opentype");
+}
+
+div#content {
+	zoom: 125%;
+}
+
+div#passwordEdit {
+	display: none;
+}
+
+div#deliveryAddressEdit {
+	display: none;
+}
+
+div#usernameEdit {
+	display: none;
+}
+
+body {
+	background-image: url("kich.jpg");
+	background-repeat: no-repeat;
+}
+
+div#options {
+	position: relative;
+    justify-content: center;
+    transform: translate(-50%, 0);
+    right: -62%;
+	top: 120px;
+}
+
+h1#accountname {
+	position: relative;
+	font-size: 12px;
+	font-weight: lighter;
+	font-family: Arial, Helvetica, sans-serif;
+	
+}
+
+button#delivery {
+    position: relative;
+    top: -247px;
+    width: 200px;
+    height: 35px;
+    color: #FFFF;
+    background-color: #54a7ab;
+    border: white;
+    border-radius: 4px;
+    right: 205px;
+}
+
+button#username {
+    position: relative;
+    top: -250px;
+    width: 200px;
+    height: 35px;
+    color: #FFFF;
+    background-color: #54a7ab;
+    border: white;
+    border-radius: 4px;
+    right: 103px;
+}
+
+button#password {
+    position: relative;
+    top: -285px;
+    width: 200px;
+    height: 35px;
+    color: #FFFF;
+    background-color: #54a7ab;
+    border: white;
+    border-radius: 4px;
+    right: -404px;
+}
+
+.box{
+	position:absolute;
+	left:50%;
+	top:50%;
+	transform: translate(-50%,-50%);
+	border-radius:3px;
+	padding:70px 100px;
+}
+.input-container{
+	position:relative;
+	margin-bottom:25px;
+}
+.input-container label{
+	position:absolute;
+	top:0px;
+	left:0px;
+	font-size:16px;
+	color:#fff;	
+	transition: all 0.5s ease-in-out;
+}
+.input-container input{ 
+  border:0;
+  border-bottom:1px solid #555;  
+  background:transparent;
+  width:100%;
+  padding:8px 0 5px 0;
+  font-size:16px;
+  color:#fff;
+}
+.input-container input:focus{ 
+ border:none;	
+ outline:none;
+ border-bottom:1px solid #e74c3c;	
+}
+
+.btn{
+    margin-left: 30%;
+	color:#fff;
+	background-color:#e74c3c;
+	outline: none;
+    border: 0;
+    color: #fff;
+	padding:10px 20px;
+	text-transform:uppercase;
+	margin-top:50px;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+}
+
+.btn#blue{
+    margin-left: 27%;
+	color:#fff;
+	background-color:#3c5e15;
+	outline: none;
+    border: 0;
+    color: #fff;
+	padding:10px 20px;
+	text-transform:uppercase;
+	margin-top: 20px;
+	border-radius:2px;
+	cursor:pointer;
+	position:relative;
+}
+
+.input-container input:focus ~ label,
+.input-container input:valid ~ label{
+	top:-12px;
+	font-size:12px;
+	
+}
+
+
+h4#subtitle {
+	font-family: 'Times New Roman', Times, serif;
+    letter-spacing: 3px;
+    font-style: italic;
+    font-size: 24px;
+    text-align: center;
+    font-weight: lighter;
+    background: -webkit-linear-gradient(to right, #000000 0%, #6E6E6E 50%, #0A0101 100%);
+    background: -moz-linear-gradient(to right, #000000 0%, #6E6E6E 50%, #0A0101 100%);
+    position: relative;
+    top: 578px;
+}
+
+h1#name {
+    font-family: Cafe_Francoise_D;
+    text-align: center;
+    font-size: 42px;
+    margin-top: 25px;
+    letter-spacing: 7px;
+    color: #3a302e;
+}
+
+div#infos {
+	display: block;
+	background-color: rgba(255, 255, 255, 0)
+}

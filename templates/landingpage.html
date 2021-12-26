@@ -19,6 +19,8 @@
             function testContent() {
                     if (document.getElementById("state").getAttribute('content') == 'Gestisci Account') {
                         document.getElementById("login").style.display = 'None';
+                        document.getElementById("accountname").style.display = 'block';
+                        document.getElementById("accountname").textContent = 'Ciao, {{accname}}'
                     }
                 }
             
@@ -34,11 +36,12 @@
         </div>
         <div id="content">
             <div id="account">
+                <h4 id="accountname">Ciao, NNNNNNNNNNNNNNN</h4>
                 <button content="{{ stato }}" id="state" onclick='window.location.replace("/account")'>{{stato}}</button>
                 <button content="Accedi" id="login" onclick='window.location.replace("/login")'>Accedi</button>
             </div>
             <div id="infos">
-                <h1 id="slogan">{{slogan}}</h1>
+                <h1 id="slogan">{{title}}</h1>
                 <h4 id="subtitle">Your order, your food, your style.</h4>
             </div>
 
