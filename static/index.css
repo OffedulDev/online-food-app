@@ -3,9 +3,26 @@
     src: url("Cafe_Francoise_D.otf") format("opentype");
 }
 
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+
+
 div#content {
     display: none;
     }
+
+div#images {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    border-radius: 3px;
+    padding: 85px 96px;
+    width: 1503px;
+}
 
 img#burger {
     display: block;
@@ -48,7 +65,7 @@ img#frutta {
 }
 
 h4#subtitle {
-    font-family: Cafe_Francoise_D;
+    font-family: 'Times New Roman', Times, serif;
     letter-spacing: 3px;
     font-style: italic;
     font-size: 14px;
@@ -84,7 +101,7 @@ button {
 	height: 75px;
 	cursor: pointer;
 	background-color: #5de6de;
-	background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUqyYzDi6ckLoaqHE1FhjcEQCSOnmvsxj6iQ&usqp=CAU");
+	background-image: url("strada.jpg");
 	border: none;
 	border-radius: 50%;
     font-family: Arial, Helvetica, sans-serif;
@@ -95,6 +112,32 @@ button {
 }
 
 button img {
+	fill: white;
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+button#login {
+    position: absolute;
+    left: 87%;
+    top: 4%;
+	width: 75px;
+	height: 75px;
+	cursor: pointer;
+	background-color: #5de6de;
+	background-image: url("rider.jpg");
+	border: none;
+	border-radius: 50%;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #ffffff;
+    font-style: normal;
+    font-weight: bold;
+	transition: 200ms;
+}
+
+button#login img {
 	fill: white;
 	width: 30px;
 	height: 30px;

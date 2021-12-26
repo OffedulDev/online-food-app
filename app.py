@@ -35,11 +35,19 @@ class AccountPage:
         return render_template('accountpage.html', self._name, self._password)
 
 class PreloadPage:
-    def __init__(self, redirect):
+    def __init__(self, redirect, token=None):
         self.redirect = redirect
+        self.token = token
     
     def build(self):
-        return render_template('preload.html', redirect=self.redirect)
+        return render_template('preload.html', redirect=self.redirect, token=self.token)
+
+class LoginPage:
+    def __init__(self):
+        self.v = None
+    
+    def build(self):
+        return render_template('login.html')
 
 class Account:
     def __init__(self, name, password):
@@ -85,8 +93,7 @@ class Account:
         token = str(temp1 + temp3 + temp5)
 
         return token
-            
-            
+              
 
 app = Flask(__name__)
 app.secret_key = 'hghfhghirubruitbyutiyuryuid'
@@ -110,6 +117,8 @@ def init():
 @app.route("/reset")
 def reset():
     session['isLoggedIn'] = False
+    session['token'] = None
+    session['user'] = None
     return redirect("/")
 
 @app.route("/account")
@@ -133,9 +142,10 @@ def account():
 @app.route("/preload")
 def preload():
     redirectPage = request.args.get('redirect')
+    token = request.args.get('token')
     isLoggedIn = request.args.get('isLoggedIn')
     
-    return PreloadPage(redirectPage).build()
+    return PreloadPage(redirectPage, token).build()
 
 @app.route("/registration", methods = ['POST', 'GET'])
 def registration():
@@ -158,8 +168,56 @@ def registration():
         session['token'] = json.loads(acc.json)['token']
         return redirect("/?token=" + session['token'])
 
+@app.route('/home')
+def loadhome():
+    return redirect("/")
 
+@app.route('/login', methods = ['POST', 'GET'])
+def login():
+    if request.method == 'GET':
+        return LoginPage().build()
+    elif request.method == 'POST':
+        sessionToken = None
+        sessionUser = None
+    
+        try:
+            sessionToken = session['token']
+            sessionUser = session['user']
+        
+        except:
+        
+            sessionToken = None
+            sessionUser = None
+        
+        if sessionToken != None: return redirect('/preload?redirect=home&isLoggedIn=false&token=' + sessionToken)
+    
+        username = request.values.get("username")
+        password = request.values.get("password")
 
+        if username == None or username == " " or password == None or password == " ": return redirect('/preload?redirect=home&isLoggedIn=false')
+    
+        if not os.path("profiles/" + username + ".kichuseraccount"): return redirect('/preload?redirect=home&isLoggedIn=false')
+    
+        with open("profiles/" + username, "w") as f:
+            content = f.read()
+            jsonDecode = json.loads(content)
+        
+            if password == jsonDecode['password']:
+                accObject = Account(jsonDecode['user'], jsonDecode['password'])
+                token = accObject.buildtoken()
+            
+                newJson = {}
+                newJson['name'] = jsonDecode['name']
+                newJson['password'] = jsonDecode['password']
+                newJson['token'] = token
+            
+                jsonEncode = json.dumps(newJson, indent=2)
+                f.seek(0)
+                f.write(jsonEncode)
+                f.truncate()
+            
+                return redirect("/preload?redirect=home&isLoggedIn=false&token=" + token)
+        
 
 
 

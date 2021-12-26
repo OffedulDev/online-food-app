@@ -3,6 +3,11 @@
     src: url("Cafe_Francoise_D.otf") format("opentype");
 }
 
+body {
+	background-image: url("kich.jpg");
+	background-repeat: no-repeat;
+}
+
 div#loading {
 	display: none;
     top: 384px;
@@ -85,13 +90,16 @@ div#loading {
 
 
 h4#subtitle {
-    font-family: Cafe_Francoise_D;
+	font-family: 'Times New Roman', Times, serif;
     letter-spacing: 3px;
     font-style: italic;
-    font-size: 14px;
+    font-size: 24px;
     text-align: center;
     font-weight: lighter;
-    color: rgb(199, 199, 195);
+    background: -webkit-linear-gradient(to right, #000000 0%, #6E6E6E 50%, #0A0101 100%);
+    background: -moz-linear-gradient(to right, #000000 0%, #6E6E6E 50%, #0A0101 100%);
+    position: relative;
+    top: 578px;
 }
 
 h1#name {
@@ -101,4 +109,9 @@ h1#name {
     margin-top: 25px;
     letter-spacing: 7px;
     color: #ffffff;
+}
+
+div#infos {
+	display: block;
+	background-color: rgba(255, 255, 255, 0)
 }

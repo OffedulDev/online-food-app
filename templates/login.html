@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title> Login </title>
+        <meta charset="utf-8">
+        <link rel=stylesheet href="{{ url_for('static', filename='registration.css') }}">
+    </head>
+    <body>
+        <div id="content">
+            <div id="infos">
+                <h1 id="name">Login</h1>
+                <h4 id="subtitle">Fill your account informations to log-in.</h4>
+            </div>
+            <div class="box">
+                <div id="loading">
+                    <img src="{{ url_for('static', filename='loading.gif') }}" alt="this slowpoke moves"  width="200" />
+                </div>
+                <form method="post">
+                    <div class="input-container">
+                        <input name="username" type="text" required=""/>
+                        <label>Username</label>		
+                    </div>
+                    <div class="input-container">		
+                        <input name="password" type="password" required=""/>
+                        <label>Password</label>
+                    </div>
+                    <button onclick="document.getElementById('loading').style.display = 'block'; setTimeout(() => { document.getElementById('loading').style.display = 'none'}, 500)"type="submit" class="btn">submit</button>
+                    <button onclick="window.location.replace('/')" class="btn" id="blue">Go Back</button>
+                </form>	
+            </div>
+        </div>
+    </body>
+</html>

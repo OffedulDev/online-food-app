@@ -15,7 +15,18 @@
                     document.getElementById("content").style.display = "block";
                     }, 7000)
             }
-            window.onload = preloader;
+
+            function testContent() {
+                    if (document.getElementById("state").getAttribute('content') == 'Gestisci Account') {
+                        document.getElementById("login").style.display = 'None';
+                    }
+                }
+            
+            function callTwo() {
+                preloader()
+                testContent()
+            }
+            window.onload = callTwo;
         </script>
 
         <div id="loading">
@@ -23,13 +34,19 @@
         </div>
         <div id="content">
             <div id="account">
-                <button onclick='window.location.replace("/account")'>{{ stato }}</button>
+                <button content="{{ stato }}" id="state" onclick='window.location.replace("/account")'>{{stato}}</button>
+                <button content="Accedi" id="login" onclick='window.location.replace("/login")'>Accedi</button>
             </div>
-            <h1 id="slogan"> {{ slogan }} </h1>
-            <h4 id="subtitle"> "Three clicks to find the perfect food." </h4> <br><br><br><br><br><br><br>
-            <img src="{{ url_for('static', filename='pizza.jpg')}}" id="pizza" >
-            <img src="{{ url_for('static', filename='burger.jpg')}}" id="burger" >
-            <img src="{{ url_for('static', filename='frutta.jpg')}}" id="frutta" >
+            <div id="infos">
+                <h1 id="slogan">{{slogan}}</h1>
+                <h4 id="subtitle">Your order, your food, your style.</h4>
+            </div>
+
+            <div id="images">
+                <img src="{{ url_for('static', filename='pizza.jpg')}}" id="pizza" >
+                <img src="{{ url_for('static', filename='burger.jpg')}}" id="burger" >
+                <img src="{{ url_for('static', filename='frutta.jpg')}}" id="frutta" >
+            </div>
         </div>
     </body>
 </html>
