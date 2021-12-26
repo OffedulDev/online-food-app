@@ -4,7 +4,6 @@ import time
 import json
 import os.path
 
-from flask.helpers import flash
 
 
 
@@ -158,7 +157,6 @@ def init():
     if given == None and token != False: return redirect("/?token=" + token)
 
     userdata = getUserData(session['user'])
-
     if token == userdata['token']:
 
         return LandingPage('Kich', True, userdata['name']).build()
@@ -189,6 +187,35 @@ def manageaccount():
             new_address = request.values.get('delivery_address')
 
             if new_address == " ": return redirect("/")
+            
+            new_data = createUserData(userdata['name'], userdata['password'], new_address, userdata['token'])
+            updateUserData(new_data, session['user'])
+            
+            return redirect("/manageaccount")
+        elif 'usernameEditForm' in request.form and sessionElementExist('user') != False:
+
+            userdata = getUserData(session['user'])
+            new_username = request.values.get('username')
+
+            if new_username == " ": return redirect("/")
+            
+            new_data = createUserData(new_username, userdata['password'], userdata['delivery_address'], userdata['token'])
+            updateUserData(new_data, session['user'])
+            
+            return redirect("/manageaccount")
+        elif 'passwordEditForm' in request.form and sessionElementExist('user') != False:
+
+            userdata = getUserData(session['user'])
+            new_password = request.values.get('password')
+
+            if new_password == " ": return redirect("/")
+            
+            new_data = createUserData(userdata['name'], new_password, userdata['delivery_address'], userdata['token'])
+            updateUserData(new_data, session['user'])
+            
+            return redirect("/manageaccount")
+        else:
+            return "None"
             
 
  
@@ -240,30 +267,35 @@ def login():
         sessionUser = sessionElementExist('user')
         
         if sessionToken != False: return redirect('/preload?redirect=home&isLoggedIn=false')
-        if checkUserData(sessionUser) == False: return redirect('/preload?redirect=home&isLoggedIn=false')
+    
 
         # starts account log
 
         username = request.values.get("username")
         password = request.values.get("password")
+        if checkUserData(username) == False: return redirect('/preload?redirect=home&isLoggedIn=false')
 
         if username == " " or password == " ": return redirect('/preload?redirect=home&isLoggedIn=false')
     
         userdata = getUserData(username)
         
-        if password == userdata['password']:
-            accObject = Account(userdata['name'], userdata['password'])
-            accObject.build()
-            token = accObject.createToken()
+        try:
+            if password == userdata['password']:
+                accObject = Account(userdata['name'], userdata['password'], userdata['delivery_address'])
+                accObject.build()
+                token = accObject.createToken()
 
-            data = createUserData(userdata['name'], userdata['password'], userdata['delivery_address'], token)
+                data = createUserData(userdata['name'], userdata['password'], userdata['delivery_address'], token)
     
-            updateUserData(data, username)
+                updateUserData(data, username)
+                session['token'] = token
+                session['user'] = userdata['name']
             
-            return redirect("/")
-        else:
-            return redirect("/preload?redirect=home&isLoggedIn=false")
-        
+                return redirect("/")
+            else:
+                return redirect("/preload?redirect=home&isLoggedIn=false")
+        except:
+            return "Error"
 
 
 
