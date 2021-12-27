@@ -1,0 +1,215 @@
+ .u-section-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 504px;
+}
+
+.u-section-1 .u-image-1 {
+  width: 254px;
+  height: 254px;
+  background-image: url("images/8e27b3b5460be05104c2cd5cb9fd30954da177c558bbe9a3916a5df5efcecbe99fd81b03d47aa0661175d54f6ef2faf90f2c32d87cc5533a52306f_1280.jpg");
+  background-position: 50% 50%;
+  margin: 28px auto 0 -54px;
+}
+
+.u-section-1 .u-image-2 {
+  width: 241px;
+  height: 241px;
+  background-image: url("images/410056728416f73a18689f0823a87b03da13ef64c0b3feaefede51892a02ea4e13db5369809534f2bc90c32e9bd22fa167a4485b49951268dc5549_1280.jpg");
+  background-position: 50% 50%;
+  margin: -104px auto 0 -12px;
+}
+
+.u-section-1 .u-text-1 {
+  font-weight: 700;
+  font-size: 3.75rem;
+  margin: -376px 386px 0 387px;
+}
+
+.u-section-1 .u-form-1 {
+  width: 570px;
+  margin: 48px 285px 0;
+}
+
+.u-section-1 .u-input-1 {
+  text-transform: uppercase;
+  font-style: italic;
+  box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+}
+
+.u-section-1 .u-input-2 {
+  text-transform: uppercase;
+  font-style: italic;
+  box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+}
+
+.u-section-1 .u-input-3 {
+  text-transform: uppercase;
+  font-style: italic;
+  box-shadow: 5px 5px 20px 0 rgba(0,0,0,0.4);
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  border-style: solid;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.u-section-1 .u-btn-2 {
+  border-style: none;
+  margin: 0 auto 21px;
+  padding: 8px 28px 8px 27px;
+}
+
+.u-section-1 .u-icon-1 {
+  color: rgb(0, 0, 0) !important;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-image-2 {
+    margin-top: -256px;
+  }
+
+  .u-section-1 .u-text-1 {
+    width: 367px;
+    margin-top: -340px;
+    margin-left: 287px;
+    margin-right: 286px;
+  }
+
+  .u-section-1 .u-form-1 {
+    margin-top: -357px;
+    margin-left: 185px;
+    margin-right: 185px;
+  }
+
+  .u-section-1 .u-btn-2 {
+    margin-bottom: 60px;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-1 .u-text-1 {
+    margin-left: 177px;
+    margin-right: 176px;
+  }
+
+  .u-section-1 .u-form-1 {
+    margin-left: 75px;
+    margin-right: 75px;
+  }
+}
+
+@media (max-width: 767px) {
+  .u-section-1 .u-text-1 {
+    margin-left: 87px;
+    margin-right: 86px;
+  }
+
+  .u-section-1 .u-form-1 {
+    width: 540px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-image-1 {
+    margin-top: 146px;
+  }
+
+  .u-section-1 .u-image-2 {
+    margin-top: -289px;
+  }
+
+  .u-section-1 .u-text-1 {
+    font-size: 1.875rem;
+    width: 340px;
+    margin-top: -425px;
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .u-section-1 .u-form-1 {
+    width: 340px;
+    margin-top: -239px;
+  }
+} .u-section-2 {
+  background-image: none;
+}
+
+.u-section-2 .u-sheet-1 {
+  min-height: 306px;
+}
+
+.u-section-2 .u-text-1 {
+  font-weight: 700;
+  font-size: 3.75rem;
+  width: 307px;
+  margin: 19px auto 0;
+}
+
+.u-section-2 .u-list-1 {
+  grid-template-rows: auto;
+  margin-top: 13px;
+  margin-bottom: 50px;
+}
+
+.u-section-2 .u-repeater-1 {
+  grid-template-columns: calc(33.3333% - 6.66667px) calc(33.3333% - 6.66667px) calc(33.3333% - 6.66667px);
+  grid-gap: 10px 10px;
+  min-height: 157px;
+}
+
+.u-section-2 .u-image-1 {
+  background-image: url("images/McDonalds_logo_logotype.png");
+  background-position: 50% 50%;
+}
+
+.u-section-2 .u-container-layout-1 {
+  padding: 0;
+}
+
+.u-section-2 .u-image-2 {
+  background-image: url("images/Burger_King_logo_emblem-2.png");
+  background-position: 50% 50%;
+}
+
+.u-section-2 .u-container-layout-2 {
+  padding: 0;
+}
+
+.u-section-2 .u-image-3 {
+  background-image: url("images/1200px-KFC_logo.svg.png");
+  background-position: 50% 50%;
+}
+
+.u-section-2 .u-container-layout-3 {
+  padding: 0;
+}
+
+@media (max-width: 1199px) {
+  .u-section-2 .u-sheet-1 {
+    min-height: 250px;
+  }
+
+  .u-section-2 .u-list-1 {
+    height: auto;
+  }
+}
+
+@media (max-width: 991px) {
+  .u-section-2 .u-repeater-1 {
+    grid-template-columns: calc(50% - 5px) calc(50% - 5px);
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-2 .u-text-1 {
+    margin-left: 0;
+    font-size: 1.5rem;
+  }
+}

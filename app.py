@@ -2,8 +2,8 @@ import random
 from flask import Flask, render_template, redirect, url_for, session, request
 import time
 import json
-import os.path
-
+import os
+import sys
 
 
 
@@ -11,10 +11,7 @@ class LandingPage:
     def __init__(self, _title, _isLoggedIn, _accName=None):
         self.title = _title
         self.isLoggedIn = _isLoggedIn
-        self.accName = None
-
-        if not _accName == None:
-            self.accName = _accName
+        self.accName = _accName
 
     def build(self):
         if self.isLoggedIn == True:
@@ -22,7 +19,7 @@ class LandingPage:
         else:
             self.isLoggedIn = "Registrati"
 
-        return render_template('landingpage.html', title=self.title, stato=self.isLoggedIn, accname=self.accName)
+        return render_template('index.html', title=self.title, stato=self.isLoggedIn, accname=self.accName)
 
 class AccountPage:
     def __init__(self, _name, _password, _delivery_address):
@@ -31,7 +28,7 @@ class AccountPage:
         self._delivery_address = _delivery_address
     
     def build(self):
-        return render_template('accountmanagment.html', name=self._name, indirizzo=self._delivery_address)
+        return render_template('Account-Managment.html', name=self._name, indirizzo=self._delivery_address)
 
 class PreloadPage:
     def __init__(self, redirect, token=None):
@@ -46,14 +43,14 @@ class RegistrationPage:
         self.v = None
     
     def build(self):
-        return render_template('registration.html')
+        return render_template('Registrati.html')
 
 class LoginPage:
     def __init__(self):
         self.v = None
     
     def build(self):
-        return render_template('login.html')
+        return render_template('Accedi.html')
 
 class Account:
     def __init__(self, name, password, delivery_address):
@@ -180,9 +177,10 @@ def manageaccount():
             return AccountPage(userdata['name'], userdata['password'], userdata['delivery_address']).build()
         else:
             return redirect("/")
-    else:
-        if 'deliveryAddressEditForm' in request.form and sessionElementExist('user') != False:
+    elif request.method == 'POST':
+        if 'delivery_address' in request.form and sessionElementExist('user') != False:
 
+            print("got post1")
             userdata = getUserData(session['user'])
             new_address = request.values.get('delivery_address')
 
@@ -192,19 +190,29 @@ def manageaccount():
             updateUserData(new_data, session['user'])
             
             return redirect("/manageaccount")
-        elif 'usernameEditForm' in request.form and sessionElementExist('user') != False:
+        elif 'username' in request.form and sessionElementExist('user') != False:
 
             userdata = getUserData(session['user'])
             new_username = request.values.get('username')
 
-            if new_username == " ": return redirect("/")
-            
+            if new_username == " " or len(new_username) > 15 or len(new_username) < 2: return redirect("/")
+
             new_data = createUserData(new_username, userdata['password'], userdata['delivery_address'], userdata['token'])
             updateUserData(new_data, session['user'])
-            
-            return redirect("/manageaccount")
-        elif 'passwordEditForm' in request.form and sessionElementExist('user') != False:
 
+            os.chdir(r'profiles/')
+
+            os.rename(session['user'] + ".kichuseraccount", new_username + ".kichuseraccount")
+            session['user'] = new_username
+
+            os.chdir("..")
+
+
+
+            return redirect("/manageaccount")
+        elif 'password' in request.form and sessionElementExist('user') != False:
+
+            print("got post3")
             userdata = getUserData(session['user'])
             new_password = request.values.get('password')
 
@@ -279,23 +287,20 @@ def login():
     
         userdata = getUserData(username)
         
-        try:
-            if password == userdata['password']:
-                accObject = Account(userdata['name'], userdata['password'], userdata['delivery_address'])
-                accObject.build()
-                token = accObject.createToken()
+        if password == userdata['password']:
+            accObject = Account(userdata['name'], userdata['password'], userdata['delivery_address'])
+            accObject.build()
+            token = accObject.createToken()
 
-                data = createUserData(userdata['name'], userdata['password'], userdata['delivery_address'], token)
+            data = createUserData(userdata['name'], userdata['password'], userdata['delivery_address'], token)
     
-                updateUserData(data, username)
-                session['token'] = token
-                session['user'] = userdata['name']
-            
-                return redirect("/")
-            else:
-                return redirect("/preload?redirect=home&isLoggedIn=false")
-        except:
-            return "Error"
+            updateUserData(data, username)
+            session['token'] = token
+            session['isLoggedIn'] = True
+            session['user'] = userdata['name']
+        
+        return redirect("/")
+
 
 
 
