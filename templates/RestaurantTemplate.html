@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="{{restaurantName}}">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Ristoranti {{rname}} vicino a te.</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='nicepage.css')}}" media="screen">
+<link rel="stylesheet" href="{{url_for('static', filename='RestaurantTemplate.css')}}" media="screen">
+    <script class="u-script" type="text/javascript" src="{{url_for('static', filename='jquery.js')}}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{url_for('static', filename='nicepage.js')}}" defer=""></script>
+    <meta name="generator" content="Nicepage 4.2.6, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="RestaurantTemplate">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body"><header class="u-clearfix u-header u-palette-2-light-1 u-header" id="sec-b30d"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-text u-text-default u-text-1"><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 57.066 57.066" x="0px" y="0px" style="width: 1em; height: 1em;"><path style="fill:currentColor;" d="M30.797,10v15.5c0,0.828-0.672,1.5-1.5,1.5h0c-0.828,0-1.5-0.672-1.5-1.5V3c0-1.657-1.343-3-3-3h0
+	c-1.657,0-3,1.343-3,3v22.5c0,0.828-0.672,1.5-1.5,1.5h0c-0.828,0-1.5-0.672-1.5-1.5v-18c0-1.381-1.119-2.5-2.5-2.5h0
+	c-1.381,0-2.5,1.119-2.5,2.5v20c0,0.828-0.672,1.5-1.5,1.5h0c-0.828,0-1.5-0.672-1.5-1.5V15c0-1.381-1.119-2.5-2.5-2.5h-0.01
+	c-1.381,0-2.5,1.119-2.5,2.5v27.128c0.836,12.08,7.46,14.938,16.81,14.938c6.667,0,12.416-3.409,15.177-8.351
+	c1.161-1.874,8.194-12.825,8.798-13.969c0.704-1.334,1.735-2.94,3.035-4.002c0.693-0.566,1.154-1.318,1.581-2.105
+	c0.109-0.202,0.426-2.646-1.391-2.639c-1.576,0.006-3.375,0.67-4.68,1.552c-1.463,0.989-3.362,2.696-4.984,5.531
+	c-0.527,0.922-1.471,1.564-2.532,1.588c-1.001,0.023-0.742-0.468-0.804-2.536l0,0v-2.988V10c0-1.657-1.343-3-3-3h0
+	C32.14,7,30.797,8.343,30.797,10z"></path></svg><img></span>&nbsp;Ciao, {{accname}}
+        </p>
+        <a style="opacity: 0;" href="https://nicepage.com/one-page-template" class="u-btn u-btn-round u-button-style u-gradient u-hover-palette-1-base u-none u-radius-50 u-text-body-alt-color u-text-hover-palette-3-base u-btn-1"><span class="u-icon u-text-white u-icon-2"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><circle cx="245.333" cy="160" r="74.667"></circle><circle cx="394.667" cy="224" r="53.333"></circle><circle cx="97.515" cy="224" r="53.333"></circle><path d="M245.333,256c-76.459,0-138.667,62.208-138.667,138.667c0,5.888,4.779,10.667,10.667,10.667h256    c5.888,0,10.667-4.779,10.667-10.667C384,318.208,321.792,256,245.333,256z"></path><path d="M115.904,300.971c-6.528-1.387-13.163-2.304-19.904-2.304c-52.928,0-96,43.072-96,96c0,5.888,4.779,10.667,10.667,10.667    h76.629c-1.195-3.349-1.963-6.912-1.963-10.667C85.333,359.659,96.768,327.339,115.904,300.971z"></path><path d="M394.667,298.667c-6.741,0-13.376,0.917-19.904,2.304c19.136,26.368,30.571,58.688,30.571,93.696    c0,3.755-0.768,7.317-1.963,10.667H480c5.888,0,10.667-4.779,10.667-10.667C490.667,341.739,447.595,298.667,394.667,298.667z"></path></svg><img></span>&nbsp;ACCEDI
+        </a>
+        <button onclick='window.location.replace("/account")' class="u-btn u-btn-round u-button-style u-gradient u-hover-palette-1-base u-none u-radius-50 u-text-body-alt-color u-text-hover-palette-3-base u-btn-2"><span class="u-icon u-text-white u-icon-3"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><circle cx="245.333" cy="160" r="74.667"></circle><circle cx="394.667" cy="224" r="53.333"></circle><circle cx="97.515" cy="224" r="53.333"></circle><path d="M245.333,256c-76.459,0-138.667,62.208-138.667,138.667c0,5.888,4.779,10.667,10.667,10.667h256    c5.888,0,10.667-4.779,10.667-10.667C384,318.208,321.792,256,245.333,256z"></path><path d="M115.904,300.971c-6.528-1.387-13.163-2.304-19.904-2.304c-52.928,0-96,43.072-96,96c0,5.888,4.779,10.667,10.667,10.667    h76.629c-1.195-3.349-1.963-6.912-1.963-10.667C85.333,359.659,96.768,327.339,115.904,300.971z"></path><path d="M394.667,298.667c-6.741,0-13.376,0.917-19.904,2.304c19.136,26.368,30.571,58.688,30.571,93.696    c0,3.755-0.768,7.317-1.963,10.667H480c5.888,0,10.667-4.779,10.667-10.667C490.667,341.739,447.595,298.667,394.667,298.667z"></path></svg><img></span>&nbsp;GESTISCI ACCOUNT
+        </button>
+        <button onclick="window.location.replace('/restaurants')" class="u-btn u-button-style u-hover-palette-3-base u-palette-2-base u-btn-3"><span class="u-icon u-text-white u-icon-4"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><polygon points="256,152.96 79.894,288.469 79.894,470.018 221.401,470.018 221.401,336.973 296.576,336.973 296.576,470.018 432.107,470.018 432.107,288.469"></polygon><polygon points="439.482,183.132 439.482,90.307 365.316,90.307 365.316,126.077 256,41.982 0,238.919 35.339,284.855 256,115.062 476.662,284.856 512,238.92"></polygon></svg><img></span>
+        </button>
+        <h3 class="u-headline u-text u-text-2">
+          <a href="/">KICH</a>
+        </h3>
+        <p class="u-small-text u-text u-text-default u-text-variant u-text-3">Your order, your food, your style.</p>
+      </div></header>
+    <section class="u-clearfix u-section-1" id="sec-bb07">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <div class="u-clearfix u-expanded-width u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-row">
+              <div class="u-size-30">
+                <div class="u-layout-col">
+                  <div class="u-align-left u-container-style u-image u-layout-cell u-size-60 u-image-1" data-image-width="1280" data-image-height="853">
+                    <div class="u-container-layout u-valign-middle u-container-layout-1"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-size-30">
+                <div class="u-layout-col">
+                  <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-2">
+                    <div class="u-container-layout u-container-layout-2">
+                      <h2 class="u-custom-font u-font-open-sans u-text u-text-1">{{restaurantName}}</h2>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-30 u-layout-cell-3">
+                    <div class="u-container-layout u-container-layout-3">
+                      <button onclick='window.alert("Redirecting you...");
+                      setTimeout(() => {
+                        window.open("{{query}}")
+                      }, 1500);' class="u-btn u-btn-round u-button-style u-hover-palette-2-base u-palette-3-base u-radius-1 u-btn-1"><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 58 58" x="0px" y="0px" style="width: 1em; height: 1em;"><polygon style="fill:#E7ECED;" points="29,1.682 6,23.039 6,27.682 6,57.682 52,57.682 52,27.682 52,23.039 "></polygon><path style="fill:#6B5B4B;" d="M36,57.682H22V35.619c0-1.07,0.867-1.937,1.937-1.937h10.126c1.07,0,1.937,0.867,1.937,1.937V57.682z
+	"></path><polygon style="fill:#6C4127;" points="48,19.325 48,6.682 40,6.682 40,11.897 "></polygon><polyline style="fill:none;stroke:#6B5B4B;stroke-width:2;stroke-linecap:round;stroke-miterlimit:10;" points="1,27.682 29,1.682 
+	57,27.682 "></polyline></svg><img></span>&nbsp;<span style="font-size: 1.5rem;">APRI SU MAPS</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-b556"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Copyright 2021 KICH pagina creata con Nicepage</p>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/website-templates" target="_blank">
+        <span>Free Website Templates</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="" target="_blank">
+        <span>Website Builder Software</span>
+      </a>. 
+    </section>
+  </body>
+</html>

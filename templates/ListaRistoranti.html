@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>Lista Ristoranti</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='nicepage.css')}}" media="screen">
+<link rel="stylesheet" href="{{url_for('static', filename='ListaRistoranti.css')}}" media="screen">
+    <script class="u-script" type="text/javascript" src="{{url_for('static', filename='jquery.js')}}" defer=""></script>
+    <script class="u-script" type="text/javascript" src="{{url_for('static', filename='nicepage.js')}}" defer=""></script>
+    <meta name="generator" content="Nicepage 4.2.6, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": ""
+}</script>
+    <meta name="theme-color" content="#478ac9">
+    <meta property="og:title" content="Pagina 1">
+    <meta property="og:type" content="website">
+  </head>
+  <body class="u-body"><header class="u-clearfix u-header u-palette-2-light-1 u-header" id="sec-b30d"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-text u-text-default u-text-1"><span class="u-icon u-icon-1"><svg class="u-svg-content" viewBox="0 0 57.066 57.066" x="0px" y="0px" style="width: 1em; height: 1em;"><path style="fill:currentColor;" d="M30.797,10v15.5c0,0.828-0.672,1.5-1.5,1.5h0c-0.828,0-1.5-0.672-1.5-1.5V3c0-1.657-1.343-3-3-3h0
+	c-1.657,0-3,1.343-3,3v22.5c0,0.828-0.672,1.5-1.5,1.5h0c-0.828,0-1.5-0.672-1.5-1.5v-18c0-1.381-1.119-2.5-2.5-2.5h0
+	c-1.381,0-2.5,1.119-2.5,2.5v20c0,0.828-0.672,1.5-1.5,1.5h0c-0.828,0-1.5-0.672-1.5-1.5V15c0-1.381-1.119-2.5-2.5-2.5h-0.01
+	c-1.381,0-2.5,1.119-2.5,2.5v27.128c0.836,12.08,7.46,14.938,16.81,14.938c6.667,0,12.416-3.409,15.177-8.351
+	c1.161-1.874,8.194-12.825,8.798-13.969c0.704-1.334,1.735-2.94,3.035-4.002c0.693-0.566,1.154-1.318,1.581-2.105
+	c0.109-0.202,0.426-2.646-1.391-2.639c-1.576,0.006-3.375,0.67-4.68,1.552c-1.463,0.989-3.362,2.696-4.984,5.531
+	c-0.527,0.922-1.471,1.564-2.532,1.588c-1.001,0.023-0.742-0.468-0.804-2.536l0,0v-2.988V10c0-1.657-1.343-3-3-3h0
+	C32.14,7,30.797,8.343,30.797,10z"></path></svg><img></span>&nbsp;Ciao, {{accname}}
+        </p>
+        <button onclick="window.location.replace('/account')" class="u-btn u-btn-round u-button-style u-gradient u-hover-palette-1-base u-none u-radius-50 u-text-body-alt-color u-text-hover-palette-3-base u-btn-1"><span class="u-icon u-text-white u-icon-2"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><circle cx="245.333" cy="160" r="74.667"></circle><circle cx="394.667" cy="224" r="53.333"></circle><circle cx="97.515" cy="224" r="53.333"></circle><path d="M245.333,256c-76.459,0-138.667,62.208-138.667,138.667c0,5.888,4.779,10.667,10.667,10.667h256    c5.888,0,10.667-4.779,10.667-10.667C384,318.208,321.792,256,245.333,256z"></path><path d="M115.904,300.971c-6.528-1.387-13.163-2.304-19.904-2.304c-52.928,0-96,43.072-96,96c0,5.888,4.779,10.667,10.667,10.667    h76.629c-1.195-3.349-1.963-6.912-1.963-10.667C85.333,359.659,96.768,327.339,115.904,300.971z"></path><path d="M394.667,298.667c-6.741,0-13.376,0.917-19.904,2.304c19.136,26.368,30.571,58.688,30.571,93.696    c0,3.755-0.768,7.317-1.963,10.667H480c5.888,0,10.667-4.779,10.667-10.667C490.667,341.739,447.595,298.667,394.667,298.667z"></path></svg><img></span>&nbsp;GESTISCI ACCOUNT
+        </button>
+        <a style="opacity: 0;" class="u-btn u-btn-round u-button-style u-gradient u-hover-palette-1-base u-none u-radius-50 u-text-body-alt-color u-text-hover-palette-3-base u-btn-2"><span class="u-icon u-text-white u-icon-3"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><circle cx="245.333" cy="160" r="74.667"></circle><circle cx="394.667" cy="224" r="53.333"></circle><circle cx="97.515" cy="224" r="53.333"></circle><path d="M245.333,256c-76.459,0-138.667,62.208-138.667,138.667c0,5.888,4.779,10.667,10.667,10.667h256    c5.888,0,10.667-4.779,10.667-10.667C384,318.208,321.792,256,245.333,256z"></path><path d="M115.904,300.971c-6.528-1.387-13.163-2.304-19.904-2.304c-52.928,0-96,43.072-96,96c0,5.888,4.779,10.667,10.667,10.667    h76.629c-1.195-3.349-1.963-6.912-1.963-10.667C85.333,359.659,96.768,327.339,115.904,300.971z"></path><path d="M394.667,298.667c-6.741,0-13.376,0.917-19.904,2.304c19.136,26.368,30.571,58.688,30.571,93.696    c0,3.755-0.768,7.317-1.963,10.667H480c5.888,0,10.667-4.779,10.667-10.667C490.667,341.739,447.595,298.667,394.667,298.667z"></path></svg><img></span>&nbsp;REGISTRATI
+        </a>
+        <h3 class="u-headline u-text u-text-2">
+          <a href="/">KICH</a>
+        </h3>
+        <p class="u-small-text u-text u-text-default u-text-variant u-text-3">Your order, your food, your style.</p>
+      </div></header>
+    <section class="u-clearfix u-section-1" id="sec-66af">
+      <div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-text u-text-default u-text-1"><span class="u-file-icon u-icon u-icon-1"><img src="images/1037762.png" alt=""></span>&nbsp;Fast-food e pizzerie
+        </p>
+        <div class="u-clearfix u-layout-wrap u-layout-wrap-1">
+          <div class="u-layout">
+            <div class="u-layout-col">
+              <div class="u-size-20">
+                <div class="u-layout-row">
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-20-md u-layout-cell-1">
+                    <div class="u-container-layout u-container-layout-1">
+                      <div class="u-align-center u-container-style u-group u-group-1">
+                        <div class="u-container-layout">
+                          <img class="u-expanded-width u-image u-image-round u-preserve-proportions u-radius-10 u-image-1" src="{{url_for('static', filename='images/Burger_King_logo_emblem-2.png')}}" alt="" data-image-width="1600" data-image-height="1600">
+                          <button onclick="window.location.replace('/restaurant?name=BurgerKing')" class="u-border-1 u-border-palette-2-base u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-hover-black u-btn-1">Vedi&nbsp;<span class="u-icon u-text-palette-2-base u-icon-2"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M466.201,237.781L231.534,3.115C229.55,1.131,226.841,0,224.003,0h-192c-4.309,0-8.213,2.603-9.856,6.592 s-0.725,8.555,2.304,11.627l227.136,227.115L24.451,472.448c-3.051,3.051-3.968,7.637-2.304,11.627 c1.664,3.989,5.547,6.592,9.856,6.592h192c2.837,0,5.547-1.131,7.552-3.115l234.667-234.667 C470.382,248.704,470.382,241.963,466.201,237.781z"></path></svg><img></span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="u-align-left u-container-style u-layout-cell u-size-12 u-size-20-md u-layout-cell-2">
+                    <div class="u-container-layout u-container-layout-3">
+                      <img class="u-image u-image-round u-preserve-proportions u-radius-10 u-image-2" src="{{url_for('static', filename='images/McDonalds_logo_logotype.png')}}" alt="" data-image-width="3000" data-image-height="3000">
+                      <button onclick="window.location.replace('/restaurant?name=McDonald')" class="u-border-1 u-border-palette-2-base u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-hover-black u-btn-1">Vedi&nbsp;<span class="u-icon u-text-palette-2-base u-icon-2"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M466.201,237.781L231.534,3.115C229.55,1.131,226.841,0,224.003,0h-192c-4.309,0-8.213,2.603-9.856,6.592 s-0.725,8.555,2.304,11.627l227.136,227.115L24.451,472.448c-3.051,3.051-3.968,7.637-2.304,11.627 c1.664,3.989,5.547,6.592,9.856,6.592h192c2.837,0,5.547-1.131,7.552-3.115l234.667-234.667 C470.382,248.704,470.382,241.963,466.201,237.781z"></path></svg><img></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-20-md u-layout-cell-3">
+                    <div class="u-container-layout u-valign-top u-container-layout-4">
+                      <img class="u-image u-image-round u-preserve-proportions u-radius-10 u-image-3" src="{{url_for('static', filename='images/1200px-KFC_logo.svg.png')}}" alt="" data-image-width="1200" data-image-height="1200">
+                      <button onclick="window.location.replace('/restaurant?name=KFC')" class="u-border-1 u-border-palette-2-base u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-hover-black u-btn-1">Vedi&nbsp;<span class="u-icon u-text-palette-2-base u-icon-2"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M466.201,237.781L231.534,3.115C229.55,1.131,226.841,0,224.003,0h-192c-4.309,0-8.213,2.603-9.856,6.592 s-0.725,8.555,2.304,11.627l227.136,227.115L24.451,472.448c-3.051,3.051-3.968,7.637-2.304,11.627 c1.664,3.989,5.547,6.592,9.856,6.592h192c2.837,0,5.547-1.131,7.552-3.115l234.667-234.667 C470.382,248.704,470.382,241.963,466.201,237.781z"></path></svg><img></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-30-md u-layout-cell-4">
+                    <div class="u-container-layout u-container-layout-5">
+                      <div class="u-image u-image-circle u-preserve-proportions u-image-4" alt="" data-image-width="1200" data-image-height="800"></div>
+                      <button onclick="window.location.replace('/restaurant?name=Sushiko')" class="u-border-1 u-border-palette-2-base u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-hover-black u-btn-1">Vedi&nbsp;<span class="u-icon u-text-palette-2-base u-icon-2"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M466.201,237.781L231.534,3.115C229.55,1.131,226.841,0,224.003,0h-192c-4.309,0-8.213,2.603-9.856,6.592 s-0.725,8.555,2.304,11.627l227.136,227.115L24.451,472.448c-3.051,3.051-3.968,7.637-2.304,11.627 c1.664,3.989,5.547,6.592,9.856,6.592h192c2.837,0,5.547-1.131,7.552-3.115l234.667-234.667 C470.382,248.704,470.382,241.963,466.201,237.781z"></path></svg><img></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-30-md u-layout-cell-5">
+                    <div class="u-container-layout u-container-layout-6">
+                      <div class="u-image u-image-circle u-preserve-proportions u-image-5" alt="" data-image-width="960" data-image-height="960"></div>
+                      <button onclick="window.location.replace('/restaurant?name=PizzeriaItalia')" class="u-border-1 u-border-palette-2-base u-btn u-btn-round u-button-style u-gradient u-none u-radius-4 u-text-hover-black u-btn-1">Vedi&nbsp;<span class="u-icon u-text-palette-2-base u-icon-2"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M466.201,237.781L231.534,3.115C229.55,1.131,226.841,0,224.003,0h-192c-4.309,0-8.213,2.603-9.856,6.592 s-0.725,8.555,2.304,11.627l227.136,227.115L24.451,472.448c-3.051,3.051-3.968,7.637-2.304,11.627 c1.664,3.989,5.547,6.592,9.856,6.592h192c2.837,0,5.547-1.131,7.552-3.115l234.667-234.667 C470.382,248.704,470.382,241.963,466.201,237.781z"></path></svg><img></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-size-20">
+                <div class="u-layout-row">
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-20-md u-layout-cell-6">
+                    <div class="u-container-layout u-container-layout-7"></div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-20-md u-layout-cell-7">
+                    <div class="u-container-layout u-container-layout-8"></div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-20-md u-layout-cell-8">
+                    <div class="u-container-layout u-container-layout-9"></div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-30-md u-layout-cell-9">
+                    <div class="u-container-layout u-container-layout-10"></div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-30-md u-layout-cell-10">
+                    <div class="u-container-layout u-container-layout-11"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="u-size-20">
+                <div class="u-layout-row">
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-20-md u-layout-cell-11">
+                    <div class="u-container-layout u-container-layout-12"></div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-20-md u-layout-cell-12">
+                    <div class="u-container-layout u-container-layout-13"></div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-20-md u-layout-cell-13">
+                    <div class="u-container-layout u-container-layout-14"></div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-30-md u-layout-cell-14">
+                    <div class="u-container-layout u-container-layout-15"></div>
+                  </div>
+                  <div class="u-container-style u-layout-cell u-size-12 u-size-30-md u-layout-cell-15">
+                    <div class="u-container-layout u-container-layout-16"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a onclick="window.location.replace('/')" class="u-btn u-button-style u-hover-palette-3-base u-palette-2-base u-btn-4"><span class="u-icon u-text-white u-icon-4"><svg class="u-svg-content" viewBox="0 0 512 512" x="0px" y="0px" style="width: 1em; height: 1em;"><polygon points="256,152.96 79.894,288.469 79.894,470.018 221.401,470.018 221.401,336.973 296.576,336.973 296.576,470.018 432.107,470.018 432.107,288.469"></polygon><polygon points="439.482,183.132 439.482,90.307 365.316,90.307 365.316,126.077 256,41.982 0,238.919 35.339,284.855 256,115.062 476.662,284.856 512,238.92"></polygon></svg><img></span>
+        </a>
+      </div>
+    </section>
+    
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-b556"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Copyright 2021 KICH pagina creata con Nicepage</p>
+      </div></footer>
+    <section class="u-backlink u-clearfix u-grey-80">
+      <a class="u-link" href="https://nicepage.com/templates" target="_blank">
+        <span>Free Template</span>
+      </a>
+      <p class="u-text">
+        <span>created with</span>
+      </p>
+      <a class="u-link" href="" target="_blank">
+        <span>WYSIWYG Web Builder</span>
+      </a>. 
+    </section>
+  </body>
+</html>

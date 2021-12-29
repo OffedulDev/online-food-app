@@ -5,7 +5,7 @@ import json
 import os
 import sys
 
-
+google_maps_search_query = "https://www.google.com/maps/search/"
 
 class LandingPage:
     def __init__(self, _title, _isLoggedIn, _accName=None):
@@ -20,6 +20,13 @@ class LandingPage:
             self.isLoggedIn = "Registrati"
 
         return render_template('index.html', title=self.title, stato=self.isLoggedIn, accname=self.accName)
+
+class ListaRisorantiPage:
+    def __init__(self, accname):
+        self.accname = accname
+    
+    def build(self):
+        return render_template('ListaRistoranti.html', accname=self.accname)
 
 class AccountPage:
     def __init__(self, _name, _password, _delivery_address):
@@ -44,6 +51,14 @@ class RegistrationPage:
     
     def build(self):
         return render_template('Registrati.html')
+
+class RestaurantPage:
+    def __init__(self, restaurantName, query):
+        self.restaurantName = restaurantName
+        self.query = query
+        
+    def build(self):
+        return render_template('RestaurantTemplate.html', restaurantName=self.restaurantName, rname=self.restaurantName, query=self.query)
 
 class LoginPage:
     def __init__(self):
@@ -160,6 +175,13 @@ def init():
     else:
         return LandingPage('Kich', False).build()
 
+@app.route('/restaurant')
+def restarant():
+    get_restaurant = request.args.get('name')
+
+    if get_restaurant == None: return redirect("/")
+    return RestaurantPage(get_restaurant, google_maps_search_query + get_restaurant + "+vicino+a+me/").build()
+    
 
 @app.route("/reset")
 def reset():
@@ -180,7 +202,6 @@ def manageaccount():
     elif request.method == 'POST':
         if 'delivery_address' in request.form and sessionElementExist('user') != False:
 
-            print("got post1")
             userdata = getUserData(session['user'])
             new_address = request.values.get('delivery_address')
 
@@ -212,7 +233,6 @@ def manageaccount():
             return redirect("/manageaccount")
         elif 'password' in request.form and sessionElementExist('user') != False:
 
-            print("got post3")
             userdata = getUserData(session['user'])
             new_password = request.values.get('password')
 
@@ -225,8 +245,13 @@ def manageaccount():
         else:
             return "None"
             
+@app.route('/restaurants')
+def restaurantsList():
+    user = sessionElementExist('user')
+    if user == False: return redirect("/preload?redirect=home&isLoggedIn=false")
+    
+    return ListaRisorantiPage(user).build()
 
- 
 @app.route("/account")
 def account():
     isLoggedIn = sessionElementExist('isLoggedIn')

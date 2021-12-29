@@ -30,7 +30,16 @@
     <script type="text/javascript">
       function testContent() {
               if (document.getElementById("state").getAttribute('content') == 'Gestisci Account') {
-                  document.getElementById("login").style.opacity = '0';
+                  document.getElementById("login").textContent = 'INIZIA'
+                  document.getElementById("state").style.position = 'relative';
+                  document.getElementById("state").style.top = '14px';
+
+                  document.getElementById("login").onclick = function (){
+                    window.location.replace('/restaurants')
+                  };
+                  document.getElementById("login").style.position = 'relative';
+                  document.getElementById("login").style.right = '50px';
+                  document.getElementById("login").style.top = '5px';
                   document.getElementById("accountname").style.opacity = '255';
                   document.getElementById("accountname").textContent = 'Ciao, {{accname}}'
               }
@@ -50,7 +59,7 @@
 	c-0.527,0.922-1.471,1.564-2.532,1.588c-1.001,0.023-0.742-0.468-0.804-2.536l0,0v-2.988V10c0-1.657-1.343-3-3-3h0
 	C32.14,7,30.797,8.343,30.797,10z"></path></svg><img></span>&nbsp;Ciao, NNNNNNNNNNNNNNN
         </p>
-        <button content="Accedi" id="login" onclick='window.location.replace("/login")' class="u-btn u-btn-round u-button-style u-gradient u-hover-palette-1-base u-none u-radius-50 u-text-body-alt-color u-text-hover-palette-3-base u-btn-1"><span class="u-icon u-text-white u-icon-2"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><circle cx="245.333" cy="160" r="74.667"></circle><circle cx="394.667" cy="224" r="53.333"></circle><circle cx="97.515" cy="224" r="53.333"></circle><path d="M245.333,256c-76.459,0-138.667,62.208-138.667,138.667c0,5.888,4.779,10.667,10.667,10.667h256    c5.888,0,10.667-4.779,10.667-10.667C384,318.208,321.792,256,245.333,256z"></path><path d="M115.904,300.971c-6.528-1.387-13.163-2.304-19.904-2.304c-52.928,0-96,43.072-96,96c0,5.888,4.779,10.667,10.667,10.667    h76.629c-1.195-3.349-1.963-6.912-1.963-10.667C85.333,359.659,96.768,327.339,115.904,300.971z"></path><path d="M394.667,298.667c-6.741,0-13.376,0.917-19.904,2.304c19.136,26.368,30.571,58.688,30.571,93.696    c0,3.755-0.768,7.317-1.963,10.667H480c5.888,0,10.667-4.779,10.667-10.667C490.667,341.739,447.595,298.667,394.667,298.667z"></path></svg><img></span>&nbsp;ACCEDI
+        <button content="Accedi" id="login" onclick='window.location.replace("/login")' class="u-btn u-btn-round u-button-style u-gradient u-hover-palette-1-base u-none u-radius-50 u-text-body-alt-color u-text-hover-palette-3-base u-btn-1"><span class="u-icon u-text-white u-icon-3"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><circle cx="245.333" cy="160" r="74.667"></circle><circle cx="394.667" cy="224" r="53.333"></circle><circle cx="97.515" cy="224" r="53.333"></circle><path d="M245.333,256c-76.459,0-138.667,62.208-138.667,138.667c0,5.888,4.779,10.667,10.667,10.667h256    c5.888,0,10.667-4.779,10.667-10.667C384,318.208,321.792,256,245.333,256z"></path><path d="M115.904,300.971c-6.528-1.387-13.163-2.304-19.904-2.304c-52.928,0-96,43.072-96,96c0,5.888,4.779,10.667,10.667,10.667    h76.629c-1.195-3.349-1.963-6.912-1.963-10.667C85.333,359.659,96.768,327.339,115.904,300.971z"></path><path d="M394.667,298.667c-6.741,0-13.376,0.917-19.904,2.304c19.136,26.368,30.571,58.688,30.571,93.696    c0,3.755-0.768,7.317-1.963,10.667H480c5.888,0,10.667-4.779,10.667-10.667C490.667,341.739,447.595,298.667,394.667,298.667z"></path></svg><img></span>ACCEDI
         </button>
         <button content="{{stato}}" id="state" onclick='window.location.replace("/account")' class="u-btn u-btn-round u-button-style u-gradient u-hover-palette-1-base u-none u-radius-50 u-text-body-alt-color u-text-hover-palette-3-base u-btn-2"><span class="u-icon u-text-white u-icon-3"><svg class="u-svg-content" viewBox="0 0 490.667 490.667" x="0px" y="0px" style="width: 1em; height: 1em;"><circle cx="245.333" cy="160" r="74.667"></circle><circle cx="394.667" cy="224" r="53.333"></circle><circle cx="97.515" cy="224" r="53.333"></circle><path d="M245.333,256c-76.459,0-138.667,62.208-138.667,138.667c0,5.888,4.779,10.667,10.667,10.667h256    c5.888,0,10.667-4.779,10.667-10.667C384,318.208,321.792,256,245.333,256z"></path><path d="M115.904,300.971c-6.528-1.387-13.163-2.304-19.904-2.304c-52.928,0-96,43.072-96,96c0,5.888,4.779,10.667,10.667,10.667    h76.629c-1.195-3.349-1.963-6.912-1.963-10.667C85.333,359.659,96.768,327.339,115.904,300.971z"></path><path d="M394.667,298.667c-6.741,0-13.376,0.917-19.904,2.304c19.136,26.368,30.571,58.688,30.571,93.696    c0,3.755-0.768,7.317-1.963,10.667H480c5.888,0,10.667-4.779,10.667-10.667C490.667,341.739,447.595,298.667,394.667,298.667z"></path></svg><img></span>&nbsp;{{stato}}
         </button>
@@ -64,7 +73,8 @@
       <div class="u-align-center u-container-style u-group u-radius-20 u-shape-round u-white u-group-1">
         <div class="u-container-layout u-valign-middle u-container-layout-1">
           <h1 class="u-custom-font u-font-source-sans-pro u-text u-text-default u-text-1">Inizia ora.</h1>
-          <p class="u-text u-text-2">Crea un account per aver accesso a una lista di ristoranti scelta appositamente per te e per le tue esigenze, in tre click: chiama e ordina il tuo piatto preferito!</p>
+          <p class="u-text u-text-2">Il tuo  ristorante a portata di un click!
+            ordina da i tuoi ristoranti prefriti e al resto pensiamo noi! carne griglia sushi fast-food e molto altro! dai spazio alla tua  fantasia e all tue voglie aspettiamo un tuo click!</p>
           <button onclick="window.location.replace('/account')" class="u-active-white u-border-none u-btn u-btn-round u-button-style u-grey-75 u-hover-grey-25 u-radius-10 u-btn-1">REGISTRATI</button>
         </div>
       </div>
